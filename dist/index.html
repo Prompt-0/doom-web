@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOOM (1993) - Retro FPS Engine & Web Recreation</title>
+    <script type="module" crossorigin src="/assets/index-Bo2sv8s8.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BUoSvhCP.css">
+  </head>
+  <body>
+    <div id="app-container">
+      <!-- Top Navigation & Utility Controls -->
+      <nav class="top-nav">
+        <div class="logo-group">
+          <span class="logo-text">DOOM</span>
+          <span class="badge-tag">1993 RETRO ENGINE</span>
+        </div>
+        <div class="nav-actions">
+          <button id="btn-editor" class="action-btn">MAP EDITOR</button>
+          <button id="btn-crt" class="action-btn active">CRT FILTER: ON</button>
+          <button id="btn-audio" class="action-btn">AUDIO: ON</button>
+          <button id="btn-menu" class="action-btn">MENU (ESC)</button>
+        </div>
+      </nav>
+
+      <!-- Main Game Arcade Screen Frame -->
+      <div class="game-wrapper" id="game-frame">
+        <!-- 3D Raycasting Viewport -->
+        <canvas id="viewport-canvas" width="320" height="200"></canvas>
+
+        <!-- Classic DOOM STBAR Status Bar -->
+        <canvas id="statusbar-canvas" width="320" height="32"></canvas>
+
+        <!-- Message Log Banner -->
+        <div id="message-banner"></div>
+
+        <!-- Optional CRT Scanline Shader -->
+        <div id="crt-overlay" class="crt-overlay"></div>
+      </div>
+    </div>
+
+    <!-- Level Editor Modal -->
+    <div id="editor-modal" class="modal-backdrop" style="display: none;">
+      <div class="editor-card">
+        <div class="editor-header">
+          <div class="editor-title">IN-ENGINE MAP BUILDER</div>
+          <button id="btn-close-editor" class="action-btn">CLOSE</button>
+        </div>
+        <div class="editor-body">
+          <div class="editor-canvas-container">
+            <canvas id="editor-canvas" width="480" height="480"></canvas>
+            <span style="font-size: 10px; color: #777; margin-top: 4px;">Click / Drag on grid to paint selected tile</span>
+          </div>
+          <div class="palette-panel">
+            <div class="palette-title">Wall Textures</div>
+            <div class="palette-group">
+              <button class="palette-btn selected" data-tool="WALL_STARG1">STARG1 Steel</button>
+              <button class="palette-btn" data-tool="WALL_COMP01">COMP01 Console</button>
+              <button class="palette-btn" data-tool="WALL_BRICK01">BRICK01 Masonry</button>
+              <button class="palette-btn" data-tool="WALL_STONE2">STONE2 Dungeon</button>
+              <button class="palette-btn" data-tool="WALL_METAL1">METAL1 Hazard</button>
+              <button class="palette-btn" data-tool="WALL_TEKGREN">TEKGREN Tech</button>
+            </div>
+
+            <div class="palette-title" style="margin-top: 6px;">Doors & Sectors</div>
+            <div class="palette-group">
+              <button class="palette-btn" data-tool="DOOR">Normal Door</button>
+              <button class="palette-btn" data-tool="KEYDOOR_RED">Red Key Door</button>
+              <button class="palette-btn" data-tool="KEYDOOR_BLUE">Blue Key Door</button>
+              <button class="palette-btn" data-tool="KEYDOOR_YELLOW">Yellow Key Door</button>
+              <button class="palette-btn" data-tool="SECTOR_NUKAGE">Nukage Acid</button>
+              <button class="palette-btn" data-tool="SECTOR_LAVA">Lava Pit</button>
+              <button class="palette-btn" data-tool="SECTOR_EXIT">Exit Teleport</button>
+              <button class="palette-btn" data-tool="ERASE">Erase Tile</button>
+            </div>
+
+            <div class="palette-title" style="margin-top: 6px;">Spawns & Pickups</div>
+            <div class="palette-group">
+              <button class="palette-btn" data-tool="SPAWN_PLAYER">Player Spawn</button>
+              <button class="palette-btn" data-tool="SPAWN_IMP">Imp Demon</button>
+              <button class="palette-btn" data-tool="SPAWN_ZOMBIE">Zombieman</button>
+              <button class="palette-btn" data-tool="SPAWN_PINKY">Pinky Demon</button>
+              <button class="palette-btn" data-tool="SPAWN_CACO">Cacodemon</button>
+              <button class="palette-btn" data-tool="SPAWN_BARON">Baron of Hell</button>
+              <button class="palette-btn" data-tool="PICKUP_SHOTGUN">Shotgun</button>
+              <button class="palette-btn" data-tool="PICKUP_BFG">BFG 9000</button>
+              <button class="palette-btn" data-tool="KEY_BLUE">Blue Keycard</button>
+              <button class="palette-btn" data-tool="KEY_RED">Red Keycard</button>
+            </div>
+          </div>
+        </div>
+        <div class="editor-footer">
+          <button id="btn-export-map" class="action-btn">EXPORT JSON</button>
+          <button id="btn-test-map" class="btn-primary">TEST & PLAY MAP</button>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
